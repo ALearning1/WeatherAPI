@@ -1,6 +1,9 @@
 
 package com.example.WeatherAPI.ReportModels;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Wind {
 
     private Double speed;

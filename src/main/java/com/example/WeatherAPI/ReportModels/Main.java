@@ -1,12 +1,13 @@
 
 package com.example.WeatherAPI.ReportModels;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Main {
 
 
-    @JsonProperty("temp")
     private Double temp;
     @JsonProperty("feels_like")
     private Double feelsLike;
@@ -14,9 +15,7 @@ public class Main {
     private Double tempMin;
     @JsonProperty("temp_max")
     private Double tempMax;
-    @JsonProperty("pressure")
     private Integer pressure;
-    @JsonProperty("humidity")
     private Integer humidity;
 
 
