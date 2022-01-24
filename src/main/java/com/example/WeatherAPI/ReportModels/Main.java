@@ -1,13 +1,24 @@
 
 package com.example.WeatherAPI.ReportModels;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Main {
 
+
+    @JsonProperty("temp")
     private Double temp;
-    private Integer pressure;
-    private Integer humidity;
+    @JsonProperty("feels_like")
+    private Double feelsLike;
+    @JsonProperty("temp_min")
     private Double tempMin;
+    @JsonProperty("temp_max")
     private Double tempMax;
+    @JsonProperty("pressure")
+    private Integer pressure;
+    @JsonProperty("humidity")
+    private Integer humidity;
+
 
     public Main() {
     }
@@ -18,6 +29,14 @@ public class Main {
 
     public void setTemp(Double temp) {
         this.temp = temp;
+    }
+
+    public Double getFeelsLike() {
+        return feelsLike;
+    }
+
+    public void setFeelsLike(Double feelsLike) {
+        this.feelsLike = feelsLike;
     }
 
     public Integer getPressure() {
@@ -52,14 +71,18 @@ public class Main {
         this.tempMax = tempMax;
     }
 
+
     @Override
     public String toString() {
         return "Main{" +
                 "temp=" + temp +
-                ", pressure=" + pressure +
-                ", humidity=" + humidity +
+                ", feelsLike=" + feelsLike +
                 ", tempMin=" + tempMin +
                 ", tempMax=" + tempMax +
+                ", pressure=" + pressure +
+                ", humidity=" + humidity +
                 '}';
     }
+
+
 }

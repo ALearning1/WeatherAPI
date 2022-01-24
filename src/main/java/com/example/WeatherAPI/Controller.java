@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping
@@ -16,8 +17,8 @@ public class Controller {
     }
 
 
-    @GetMapping(path = "/{city_name}")
-    public void generateReport(@PathVariable("city_name") String cityName){
-        reportService.generatereport(cityName);
+    @GetMapping(path = "/{cityName}")
+    public Mono<String> generateReport(@PathVariable("cityName") String cityName){
+        return reportService.generateReport(cityName);
     }
 }
