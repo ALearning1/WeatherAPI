@@ -11,22 +11,19 @@ public class ReportService {
 
     @Value("${api.key}")
     private String API_KEY;
+    WebClient client = WebClient.create();
 
-
-    public Mono<String> generateReport(String cityName) {
-        WebClient client = WebClient.create();
-
-
-        Mono<String> mainReport = client
-                .get()
+    public Mono<MainResponse> getMainResponse(String cityName) {
+        return client.get()
                 .uri(uriBuilder -> uriBuilder.path("api.openweathermap.org/data/2.5/weather")
                         .queryParam("q", cityName)
+                        .queryParam("units", "metric")
                         .queryParam("appid", API_KEY)
                         .build())
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
-                .bodyToMono(String.class);
-        return mainReport;
-
+                .bodyToMono(MainResponse.class)
+                .map(mainResponse -> mainResponse);
     }
+
 }

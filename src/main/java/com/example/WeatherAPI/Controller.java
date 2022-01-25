@@ -18,7 +18,8 @@ public class Controller {
 
 
     @GetMapping(path = "/{cityName}")
-    public Mono<String> generateReport(@PathVariable("cityName") String cityName){
-        return reportService.generateReport(cityName);
+    public Mono<MainResponse> getMainResponse(@PathVariable("cityName") String cityName){
+        return reportService.getMainResponse(cityName);
+
     }
 }
